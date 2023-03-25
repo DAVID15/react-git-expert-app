@@ -1,7 +1,8 @@
 import { useState } from "react";
+import propTypes from 'prop-types';
                     
                     //aqui nos traemos las propertis 
-const AddCategory = ( props ) => {
+const AddCategory = ( {onNewCategory} ) => {
 
     const [inputValue, setinputValue] = useState('');    
     
@@ -24,7 +25,7 @@ const AddCategory = ( props ) => {
         
         //añadimos la categoria utilizando las propertires y llamando
         //a la properti que le pasamos
-        props.onNewCategory( inputValue.trim() ); 
+        onNewCategory( inputValue.trim() ); 
         
         //despues de pulsar enter se limpia el input
         setinputValue('');
@@ -32,7 +33,7 @@ const AddCategory = ( props ) => {
 
     return (
         <>
-            <form onSubmit={ (event) => onSubmit(event) }>
+            <form aria-label="form" onSubmit={ (event) => onSubmit(event) }>
                 
                 <input 
                     type="text" 
@@ -44,6 +45,11 @@ const AddCategory = ( props ) => {
             </form>
         </>
     )
+}
+
+AddCategory.propTypes = {
+    //indicamos que tiene que ser una funcion 
+    onNewCategory: propTypes.func.isRequired,
 }
 
 export {

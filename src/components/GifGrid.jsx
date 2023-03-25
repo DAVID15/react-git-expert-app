@@ -1,8 +1,8 @@
 //con nuevo fichero indicamos rafc
-
 import React from 'react';
 import { useFetchGifs } from '../hooks/useFetchGifs';
 import { GifItem } from './GifItem';
+import propTypes from 'prop-types';
 
 export const GifGrid = ( {category} ) => {
 
@@ -42,4 +42,9 @@ export const GifGrid = ( {category} ) => {
     </>
   )
 
+}
+
+//estamos indicando que son obligatorios
+GifGrid.propTypes = {
+  category: propTypes.string.isRequired,
 }
